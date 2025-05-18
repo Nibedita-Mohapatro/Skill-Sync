@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Profile - Career Connect</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        h2{
+    color:#2c3e50;
+    text-align: center;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    transition: transform 0.2s ease;
+}
+
+.info-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.info-item label {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.info-item input, 
+.info-item select {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: border-color 0.3s ease;
+}
+
+.info-item input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.info-item input[readonly] {
+    background-color: var(--light-gray);
+    cursor: not-allowed;
+}
+.profile{
+    background-color: rgb(113, 157, 208);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding: 20px;
+}
+.profile-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background:#f0f4f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.profile-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border-color);
+    font-size: 1.3rem;
+}
+
+/* Professional Links Styles */
+.professional-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.link-item i {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+.info-item,.link-item{
+    background-color: var(--light-gray);
+}
+/* Skills Styles */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.skill-tag {
+    background: var(--secondary-color);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.remove-skill {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Project Styles */
+.project-item {
+    border: 1px solid var(--border-color);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.project-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.add-button {
+    background: #6b8cae;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.delete-button {
+    background: rgb(186, 18, 18);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Additional Styles for Certificates Section */
+.certificates-section {
+    margin-top: 20px;
+}
+
+.certificate-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.certificate-details {
+    flex-grow: 1;
+}
+
+.certificate-title {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.certificate-date {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.certificate-file {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.certificate-file a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+.certificate-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.year-input {
+    -moz-appearance: textfield;
+}
+
+.year-input::-webkit-outer-spin-button,
+.year-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.saved {
+    background-color: var(--light-gray);
+}
+
+.saved h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.saved p {
+    margin: 5px 0;
+}
+
+.edit-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.project-item.saved,
+.certificate-item.saved {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--light-gray);
+}
+
+.todo-container {
+    /* Renamed to avoid conflict */
+    background-color: #f0f4f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.todo-header {
+    /* Renamed to avoid conflict */
+    font-size: 20px;
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.todo-inputs {
+    /* Renamed to avoid conflict */
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.todo-inputs input,
+.todo-inputs select {
+    padding: 10px;
+    border: 1px solid #d1dce6;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.todo-inputs button {
+    background-color: #6b8cae;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.todo-table {
+    /* Renamed to avoid conflict */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.todo-table th,
+.todo-table td {
+    border: 1px solid #d1dce6;
+    padding: 10px;
+    text-align: left;
+}
+
+.todo-table th {
+    background-color: #6b8cae;
+    color: white;
+}
+
+.todo-table td {
+    background-color: #e6eef7;
+}
+
+.todo-search {
+    /* Renamed to avoid conflict */
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+.todo-search input {
+    padding: 8px;
+    border: 1px solid #d1dce6;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+
+.delete-task-btn{
+    background-color:rgb(186, 18, 18)
+}
+
+    </style>
+</head>
+<body>
+    <!-- Basic Info Section -->
+        <section class="profile-section">
+            <h2>Basic Information</h2>
+            <form id="personal-info-form">
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label for="student-name"> Name</label>
+                        <input type="text" id="student-name">
+                    </div>
+                    <div class="info-item">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob">
+                    </div>
+                    <div class="info-item">
+                        <label for="gender">Gender</label>
+                        <select id="gender">
+                            <option value="">Select Gender</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                            <option value="O">Other</option>
+                        </select>
+                    </div>
+                    <div class="info-item">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter phone number">
+                    </div>
+                    <div class="info-item">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter email address">
+                    </div>
+                </div>
+            </form>
+            <h2>Professional Links</h2>
+            <div class="professional-links">
+                <div class="link-item">
+                    <i class="fab fa-linkedin"></i>
+                    <input type="url" placeholder="LinkedIn Profile URL">
+                </div>
+                <div class="link-item">
+                    <i class="fab fa-github"></i>
+                    <input type="url" placeholder="GitHub Profile URL">
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-code"></i>
+                    <input type="url" placeholder="HackerRank Profile URL">
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <input type="url" placeholder="LeetCode Profile URL">
+                </div>
+                <div class="link-item">
+                    <i class="fas fa-keyboard"></i>
+                    <input type="url" placeholder="GeeksForGeeks Profile URL">
+                </div>
+            </div>
+        </section>
+        <!-- Certificates Section -->
+        <section class="profile-section">
+            <h2>Certificates & Achievements</h2>
+            <div class="form-group">
+                <button class="add-button" id="add-certificate">Add New Certificate</button>
+            </div>
+            <div id="certificates-list">
+                <!-- Certificates will be added here dynamically -->
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="profile-section">
+            <h2>Skills & Expertise</h2>
+            <div class="form-group">
+                <input type="text" id="skill-input" placeholder="Enter a skill">
+                <button class="add-button" id="add-skill">Add Skill</button>
+            </div>
+            <div class="skills-container" id="skills-list">
+                <!-- Skills will be added here dynamically -->
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="profile-section">
+            <h2>Projects</h2>
+            <button class="add-button" id="add-project">Add New Project</button>
+            <div id="projects-list">
+                <!-- Projects will be added here dynamically -->
+            </div>
+        </section>
+
+        <!-- Add this HTML below the projects section -->
+        <section class="todo-container">
+            <h2 class="todo-header">TODO List</h2>
+            <div class="todo-search">
+                <input type="text" id="task-search" placeholder="Search tasks...">
+            </div>
+            <div class="todo-inputs">
+                <input type="text" id="task-name" placeholder="Task Name">
+                <input type="date" id="start-date">
+                <input type="date" id="end-date">
+                <select id="priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+                <button id="add-task">Add Task</button>
+            </div>
+            <table class="todo-table">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="todo-list">
+                    <!-- Tasks will be added here dynamically -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Skills Management
+            $("#add-skill").click(function() {
+                const skillInput = $("#skill-input");
+                const skill = skillInput.val().trim();
+                
+                if (skill) {
+                    const skillTag = $(`
+                        <div class="skill-tag">
+                            ${skill}
+                            <button class="remove-skill">&times;</button>
+                        </div>
+                    `);
+                    
+                    $("#skills-list").append(skillTag);
+                    skillInput.val("").focus();
+                }
+            });
+
+            // Remove skill
+            $(document).on("click", ".remove-skill", function() {
+                $(this).parent().remove();
+            });
+
+            // Project Management
+            $("#add-project").click(function() {
+                const projectForm = $(`
+                    <div class="project-item">
+                        <div class="form-group">
+                            <label>Project Title</label>
+                            <input type="text" placeholder="Enter project title" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <textarea placeholder="Enter project description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Technologies Used</label>
+                            <input type="text" placeholder="Enter technologies (comma-separated)" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Project URL (if any)</label>
+                            <input type="url" placeholder="Enter project URL">
+                        </div>
+                        <div class="form-group">
+                            <label>Duration</label>
+                            <input type="text" class="year-input" placeholder="YYYY-YYYY" maxlength="9" pattern="\d{4}-\d{4}" required>
+                        </div>
+                        <div class="project-actions">
+                            <button type="button" class="save-project-btn add-button">Save Project</button>
+                            <button type="button" class="delete-button">Delete</button>
+                        </div>
+                    </div>
+                `);
+                
+                $("#projects-list").append(projectForm);
+            });
+
+            // Save individual project
+            $(document).on("click", ".save-project-btn", function() {
+                const projectItem = $(this).closest(".project-item");
+                const title = projectItem.find("input").eq(0).val();
+                const description = projectItem.find("textarea").val();
+                const technologies = projectItem.find("input").eq(1).val();
+                const url = projectItem.find("input").eq(2).val();
+                const duration = projectItem.find(".year-input").val();
+
+                if (!title || !description || !technologies || !duration) {
+                    showMessage("Please fill in all required project fields", true);
+                    return;
+                }
+
+                // Convert to read-only display
+                const savedProject = $(`
+                    <div class="project-item saved">
+                        <h3>${title}</h3>
+                        <p><strong>Description:</strong> ${description}</p>
+                        <p><strong>Technologies:</strong> ${technologies}</p>
+                        ${url ? `<p><strong>URL:</strong> <a href="${url}" target="_blank">${url}</a></p>` : ''}
+                        <p><strong>Duration:</strong> ${duration}</p>
+                        <div class="project-actions">
+                            <button type="button" class="edit-btn add-button">Edit</button>
+                            <button type="button" class="delete-button">Delete</button>
+                        </div>
+                    </div>
+                `);
+
+                projectItem.replaceWith(savedProject);
+                showMessage("Project saved successfully!");
+            });
+
+            // Certificate Management
+            $("#add-certificate").click(function() {
+                const certificateForm = $(`
+                    <div class="certificate-item">
+                        <div class="certificate-details">
+                            <div class="form-group">
+                                <label>Certificate Title</label>
+                                <input type="text" placeholder="Enter certificate title" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Certificate File</label>
+                                <input type="file" accept=".pdf,.jpg,.jpeg,.png" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Description (Optional)</label>
+                                <textarea placeholder="Enter certificate description"></textarea>
+                            </div>
+                        </div>
+                        <div class="certificate-actions">
+                            <button type="button" class="save-certificate-btn add-button">Save Certificate</button>
+                            <button type="button" class="delete-button">Delete</button>
+                        </div>
+                    </div>
+                `);
+                
+                $("#certificates-list").append(certificateForm);
+            });
+
+            // Save individual certificate
+            $(document).on("click", ".save-certificate-btn", function() {
+                const certItem = $(this).closest(".certificate-item");
+                const title = certItem.find("input").eq(0).val();
+                const file = certItem.find("input[type='file']").val();
+                const description = certItem.find("textarea").val();
+
+                if (!title || !file) {
+                    showMessage("Please fill in all required certificate fields", true);
+                    return;
+                }
+
+                // Convert to read-only display
+                const savedCertificate = $(`
+                    <div class="certificate-item saved">
+                        <div class="certificate-details">
+                            <h3>${title}</h3>
+                            <p><strong>File:</strong> ${file.split('\\').pop()}</p>
+                            ${description ? `<p><strong>Description:</strong> ${description}</p>` : ''}
+                        </div>
+                        <div class="certificate-actions">
+                            <button type="button" class="edit-btn add-button">Edit</button>
+                            <button type="button" class="delete-button">Delete</button>
+                        </div>
+                    </div>
+                `);
+
+                certItem.replaceWith(savedCertificate);
+                showMessage("Certificate saved successfully!");
+            });
+
+            // Year input validation
+            $(".year-input").on("input", function() {
+                let value = $(this).val().replace(/[^\d-]/g, '');
+                if (value.length > 9) {
+                    value = value.slice(0, 9);
+                }
+                // Format as YYYY-YYYY
+                if (value.length >= 4 && !value.includes('-')) {
+                    value = value.slice(0, 4) + '-' + value.slice(4);
+                }
+                $(this).val(value);
+            });
+
+            // Form validation
+            function validatePhone(phone) {
+                return /^\d{10}$/.test(phone);
+            }
+
+            function validateEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            function showMessage(message, isError = false) {
+                const statusDiv = $(".status-message");
+                statusDiv.removeClass("success error")
+                    .addClass(isError ? "error" : "success")
+                    .text(message)
+                    .fadeIn()
+                    .delay(3000)
+                    .fadeOut();
+            }
+
+            // Fix delete functionality for both projects and certificates
+            $(document).on("click", ".delete-button", function() {
+                $(this).closest(".project-item, .certificate-item").remove();
+            });
+
+            // TODO List Functionality
+            $("#add-task").click(function() {
+                const taskName = $("#task-name").val().trim();
+                const startDate = $("#start-date").val();
+                const endDate = $("#end-date").val();
+                const priority = $("#priority").val();
+
+                if (!taskName || !startDate || !endDate) {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+
+                const taskRow = $(`
+                    <tr>
+                        <td>${taskName}</td>
+                        <td>${startDate}</td>
+                        <td>${endDate}</td>
+                        <td>${priority}</td>
+                        <td class="status">Pending</td>
+                        <td>
+                            <button class="status-btn">Complete</button>
+                            <button class="delete-task-btn">Delete</button>
+                        </td>
+                    </tr>
+                `);
+
+                $("#todo-list").append(taskRow);
+                $("#task-name").val("");
+                $("#start-date").val("");
+                $("#end-date").val("");
+            });
+
+            // Change status to Completed
+            $(document).on("click", ".status-btn", function() {
+                const statusCell = $(this).closest("tr").find(".status");
+                if (statusCell.text() === "Pending") {
+                    statusCell.text("Completed");
+                    $(this).text("Undo");
+                } else {
+                    statusCell.text("Pending");
+                    $(this).text("Complete");
+                }
+            });
+
+            // Delete task
+            $(document).on("click", ".delete-task-btn", function() {
+                $(this).closest("tr").remove();
+            });
+
+            // Task Search Functionality
+            $("#task-search").on("input", function() {
+                const searchValue = $(this).val().toLowerCase();
+                $("#todo-list tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(searchValue) > -1);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="aboutus.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>ABOUT US</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.btn-primary {
+    background-color: #084b928c; /* Bootstrap primary color */
+    border-color: #131313;
+    float:right ;
+    margin-top: 1%; /* Border color */
+    padding: 12px 24px; /* Increase padding for a larger button */
+    font-size: 1.1rem; /* Increase font size */
+    border-width: 0.1cm;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #8f9295; /* Darker border on hover */
+}
+body {
+    line-height: 1.6;
+    font-family: Arial, sans-serif;
+    background-color: #e3e8f0;
+}
+h2{
+    font-family: Georgia, Times, 'Times New Roman', serif;
+}
+p{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+}
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+li {
+    font-size: 17px;
+}
+
+a {
+    display: block;
+    padding: 8px;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: white;
+    background-color: #86a9c4;
+    border-radius: 5px;
+}
+
+.about-section {
+    background-image: url('navdetimg.png');
+    background-size: cover; /* Ensures the image covers the full section */
+    background-position:center; /* Centers the image */
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Optional, removes scrolling effect */
+    padding: 60px 20px;
+    color: #ffffff;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.text-content {
+    flex: 1 1 50%;
+    padding: 20px;
+}
+
+.text-content h2 {
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.text-content p {
+    font-size: 18px;
+    color: #f0f0f0;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.image-content {
+    flex: 1 1 40%;
+    text-align: center;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+    border: 5px solid #ffffff;
+    border-radius: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+
+    .text-content,
+    .image-content {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+}
+
+.footer {
+    height: 200px;
+    background-color: #394f65;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    margin-bottom: 20px;
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #ecf0f1;
+}
+
+.footer-section a:hover {
+    color: #3498db;
+}
+
+.footer-bottom {
+    background-color: #34495e;
+    padding: 10px;
+    color: #ecf0f1;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 16px;
+}
+
+.social-icon:hover {
+    color: #3498db;
+}
+
+.social-icon i {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    
+    <!-- About Us Section -->
+    <section class="about-section">
+        <!--back to home-->
+        <div class="container mt-3">
+            <a href="index.html" class="btn btn-primary">Back to Home</a>
+        </div>
+        <div class="container about-content">
+            <div class="text-content">
+                <h2>Who We Are</h2>
+                <p>
+                    We are a team of three passionate tech enthusiasts dedicated to empowering students in their career journeys. With a shared love for coding, design, and problem-solving, we’ve built this platform to help our fellowmates to track their interview performance, identify areas for improvement, and stay prepared for success. Our mission is to bridge the gap between preparation and placement with smart tracking and resume management. We believe that every setback is a setup for a comeback, and our platform ensures you learn, grow, and ace your next interview. 
+                </p>
+                <h2>What We Do</h2>
+                <p>
+                    We transform interview experiences into stepping stones for success. Our platform helps students record their performance, analyze setbacks, and refine their skills to stay ahead in their job search. With seamless resume management and insightful tracking, we turn challenges into opportunities, ensuring every candidate is better prepared, more confident, and interview-ready.                </p>
+                <h2> Our Mission and Vision</h2>
+                <p><h3>🌟Mission</h3>
+                   <p>
+                    SkillSync reflects the core idea of our platform—helping students synchronize their skills, interview experiences, and improve according to their performance.
+                    <ul>
+                    <li>"Skill" emphasizes skill development, improvement, and tracking.</li>
+                    <li>"Sync" represents alignment, organization, and smooth integration of job preparation efforts.</li>
+                    </ul>
+                    <p>Together, SkillSync offers a structured and connected approach to interview preparation, helping students log experiences, refine skills, and stay in sync with their career goals.
+                    </p>
+                </p>
+                <p><h3>🚀Vision</h3>
+                <p>To be the go-to platform for students to track, analyze, and improve their interview readiness, bridging the gap between learning and real-world job success.
+                    </p>
+                </p>
+           
+                </div>
+            <div class="image-content">
+                <img src="team-photo-placeholder.jpg" alt="Our Work" class="img-fluid border" />
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="footer">
+        
+            
+            <!-- Social Media Links -->
+            <div class="footer-section social-media">
+                <p><strong>Follow Us</strong></p>
+                <div class="social-icons">       
+                    <a href="https://www.linkedin.com" target="_blank" class="social-icon">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://mail.google.com" target="_blank" class="social-icon">
+                        <i class="fa-regular fa-envelope"></i> Gmail
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom Section with Copyright -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Career Connect. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

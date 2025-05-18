@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Steps</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+       .uptext {
+         color: rgb(198, 198, 198);
+         font-size: 130%;
+         font-weight: 700; /* Removed 'px' */
+        }
+        .btn-primary {
+            background-color: #084b928c; /* Bootstrap primary color */
+            border-color: #131313;
+            float:right ;
+            margin-top: 1%; /* Border color */
+            padding: 12px 24px; /* Increase padding for a larger button */
+            font-size: 1.1rem; /* Increase font size */
+            border-width: 0.1cm;
+        }
+
+        .btn-primary:hover {
+           background-color: #0056b3; /* Darker blue on hover */
+           border-color: #8f9295; /* Darker border on hover */
+        }
+
+        /* Set the background image */
+        body {
+            background: url('navdetimg.png') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .card {
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+            border-radius: 10px;
+            background: #c8c7ca; /* Ensures card background remains solid */
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .icon {
+            font-size: 40px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .card-title {
+            font-weight: bold;
+            color: #333;
+        }
+        .card-text {
+            color: #555;
+        }
+        .footer {
+    height: 200px;
+    background-color: #394f65;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    margin-bottom: 20px;
+}
+
+.footer-section p {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    text-decoration: none;
+    color: #ecf0f1;
+}
+
+.footer-section a:hover {
+    color: #3498db;
+}
+
+.footer-bottom {
+    background-color: #34495e;
+    padding: 10px;
+    color: #ecf0f1;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 16px;
+}
+
+.social-icon:hover {
+    color: #3498db;
+}
+
+.social-icon i {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row g-4">
+            <div>
+                <a href="index.html" class="btn btn-primary">Back to Home</a>
+            </div>
+            <div class="uptext">
+                Follow these steps to document your job application process, track your interview performance, and identify areas for improvement. From job details to skill enhancement, this guide helps you stay organized and prepared for future opportunities.
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-pencil-square icon"></i>
+                    <h5 class="card-title">Step 1</h5>
+                    <p class="card-text">Give your job title</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-file-text icon"></i>
+                    <h5 class="card-title">Step 2</h5>
+                    <p class="card-text">Detailed job description.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-upload icon"></i>
+                    <h5 class="card-title">Step 3</h5>
+                    <p class="card-text">Upload your resume</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-question-circle icon"></i>
+                    <h5 class="card-title">Step 4</h5>
+                    <p class="card-text">Interview questions and your responses.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-x-circle icon"></i>
+                    <h5 class="card-title">Step 5</h5>
+                    <p class="card-text">Areas where you faced challenges.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-bar-chart-line icon"></i>
+                    <h5 class="card-title">Step 6</h5>
+                    <p class="card-text">Key areas for skill improvement.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-exclamation-circle icon"></i>
+                    <h5 class="card-title">Step 7</h5>
+                    <p class="card-text">Remember mistakes and improve.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm p-4">
+                    <i class="bi bi-journal-text icon"></i>
+                    <h5 class="card-title">Step 8</h5>
+                    <p class="card-text">Add extra notes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Section -->
+    <footer class="footer">
+        
+            
+        <!-- Social Media Links -->
+        <div class="footer-section social-media">
+            <p><strong>Follow Us</strong></p>
+            <div class="social-icons">       
+                <a href="https://www.linkedin.com" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://mail.google.com" target="_blank" class="social-icon">
+                    <i class="fa-regular fa-envelope"></i> Gmail
+                </a>
+                <a href="https://www.instagram.com" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom Section with Copyright -->
+    <div class="footer-bottom">
+        <p>&copy; 2025 Career Connect. All rights reserved.</p>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
